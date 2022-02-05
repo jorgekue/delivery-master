@@ -32,6 +32,6 @@ instances:
     version: 1.0.0
     tags: [DEPLOY, DB, CONFIG]
   -
-    name: Workflow1-
+    name: Workflow1
     typ: CTM-Workflow
     version: 1.0.0
