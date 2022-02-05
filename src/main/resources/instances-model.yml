@@ -1,0 +1,37 @@
+# define necessary environments for release
+# possible environment are [INT, FUNC, PRE, HOT, PROD]
+
+environments: [INT, FUNC, PRE, PROD]
+
+# define necessary components and their caracteristics for release
+# possible tags: [DEPLOY, DB, CONFIG], if tags is not set thea all actions are considered by default
+instances:
+  -
+    name: Program1
+    typ: Wildfly-EAR
+    version: 1.0.6
+    tags: [DEPLOY, DB, CONFIG]
+  -
+    name: Program2
+    typ: Win-EXE
+    version: 1.2.7
+    tags: [DEPLOY, DB, CONFIG]
+  -
+    name: Async-Adapter1
+    typ: Spring-Batch
+    version: 1.0.0
+    tags: [DEPLOY, CONFIG]
+  -
+    name: Sync-Adapter1
+    typ: Mule-Adapter
+    version: 1.2.0
+    tags: [DEPLOY]
+  -
+    name: Service1
+    typ: Spring-Boot
+    version: 1.0.0
+    tags: [DEPLOY, DB, CONFIG]
+  -
+    name: Workflow1-
+    typ: CTM-Workflow
+    version: 1.0.0

@@ -1,0 +1,306 @@
+
+# model definitions of general actions 4 environments before considering any component
+general_pre_actions:
+  -
+    name: "Changes in Change-Mgmt-Tool created?"
+    envs: [PRE]
+    hints: Ensure, all required changes are created
+    time: '00:30'
+  -
+    name: "Changes: Ensure approval by Change Mgr"
+    envs: [PROD]
+    time: '00:15'
+  -
+    name: "Smoke integration tests IT 4 whole system - before release actions"
+    envs: [INT, FUNC, PRE, HOT, PROD]
+    hints: '"Link 2 wiki with test description or tool 4 automated tests"'
+    time: '00:10'
+  -
+    name: "Send mail starting maintenance to interested parties"
+    envs: [INT, FUNC, PRE, HOT, PROD]
+    time: '00:05'
+  -
+    name: "Send mail to monitoring: Start of maintenance"
+    envs: [PROD]
+    time: '00:15'
+    hints: '"Link 2 template in wiki"'
+  -
+    name: "Switch on maintenance page"
+    envs: [INT, FUNC, PRE, HOT, PROD]
+    time: '00:10'
+    hints: '"Link 2 template in wiki"'
+  -
+    name: "(optional) DB-Backup"
+    envs: [INT, FUNC, PRE, HOT, PROD]
+    time: '00:10'
+    hints: "Request to responsible DBAs"
+
+# model definitions of general actions 4 environments after considering any component
+general_post_actions:
+  -
+    name: "Smoke integration tests IT 4 whole system - after release actions"
+    envs: [INT, FUNC, PRE, HOT, PROD]
+    hints: '"Link 2 wiki with test description or tool 4 automated tests"'
+    time: '00:10'
+  -
+    name: "Switch off maintenance page"
+    envs: [INT, FUNC, PRE, HOT, PROD]
+    time: '00:10'
+    hints: '"Link 2 template in wiki"'
+  -
+    name: "Send mail end of maintenance to interested parties"
+    envs: [INT, FUNC, PRE, HOT, PROD]
+    time: '00:05'
+  -
+    name: "Request for functional test to business unit"
+    envs: [FUNC]
+    time: '00:05'
+    hints: "Send mail to business unit and wait for approval"
+  -
+    name: "Request for approval test to business unit"
+    envs: [PRE]
+    time: '00:05'
+    hints: "Send mail to business unit and wait for approval"
+  -
+    name: "Send mail to monitoring: end of maintenance"
+    envs: [PROD]
+    time: '00:15'
+    hints: '"Link 2 template in wiki"'
+  -
+    name: "complete Changes in Change Mgmt-Tool"
+    envs: [PROD]
+    time: '00:15'
+
+# model definitions of component based actions
+components:
+  -
+    typ: Win-EXE
+    actions:
+      -
+        name: "Provide deployment artifact in maven-snapshot"
+        hints: '"Link Howto in wiki"'
+        tags: [DEPLOY]
+        envs: [INT]
+        time: '00:15'
+      -
+        name: "Stage deployment artifact to maven-prod"
+        hints: '"Link Howto in wiki or to tool (pipeline)"'
+        tags: [DEPLOY]
+        envs: [PROD]
+        time: '00:15'
+      -
+        name: "Flyway-Migrate"
+        hints: '"Link Howto in wiki or to tool"'
+        tags: [DB]
+        envs: [INT, FUNC, PRE, HOT, PROD]
+        time: '00:10'
+      -
+        name: "Prepare configuration in Git"
+        hints: '"Link to git-project"'
+        tags: [CONFIG]
+        envs: [INT, FUNC, PRE, HOT, PROD]
+        time: '00:15'
+      -
+        name: "Ansible-Deploy"
+        hints: '"Link Howto in wiki or to tool"'
+        tags: [DEPLOY, CONFIG]
+        envs: [INT, FUNC, PRE, HOT, PROD]
+        time: '00:15'
+      -
+        name: "Checkpoint: Correct Version installed"
+        hints: "Check logs"
+        tags: [DEPLOY, CONFIG]
+        envs: [INT, FUNC, PRE, HOT, PROD]
+        time: '00:15'
+      -
+        name: "Modul test"
+        hints: "Start Component and log in successfully"
+        tags: [DEPLOY, CONFIG]
+        envs: [INT, FUNC, PRE, HOT, PROD]
+        time: '00:15'
+      -
+        name: "Stage deployment artifact to maven-approval"
+        hints: '"Link Howto in wiki or to tool (pipeline)"'
+        tags: [DEPLOY]
+        envs: [INT]
+        time: '00:15'
+  -
+    typ: Wildfly-EAR
+    actions:
+      -
+        name: "Prepare configuration in Git"
+        hints: '"Link to git-project"'
+        tags: [CONFIG]
+        envs: [INT, FUNC, PRE, HOT, PROD]
+        time: '00:10'
+      -
+        name: "Create Release-Build via Gitlab-Tag into maven-approval"
+        hints: '"Link Howto in wiki or to tool (Gitlab)"'
+        tags: [DEPLOY]
+        envs: [INT]
+        time: '00:10'
+      -
+        name: "Checkpoint: Deployment artifact in maven-approval?"
+        hints: "Check Nexus"
+        tags: [DEPLOY]
+        envs: [INT]
+        time: '00:05'
+      -
+        name: "Stage deployment artifact to maven-prod"
+        hints: '"Link Howto in wiki or to tool (pipeline)"'
+        tags: [DEPLOY]
+        envs: [PROD]
+        time: '00:15'
+      -
+        name: "Checkpoint: Deployment artifact in maven-prod?"
+        hints: "Check Nexus"
+        tags: [DEPLOY]
+        envs: [PROD]
+        time: '00:05'
+      -
+        name: "Flyway-Migrate"
+        hints: '"Link Howto in wiki or to tool"'
+        tags: [DB]
+        envs: [INT, FUNC, PRE, HOT, PROD]
+        time: '00:10'
+      -
+        name: "Ansible-Deploy"
+        hints: '"Link Howto in wiki or to tool"'
+        tags: [DEPLOY, CONFIG]
+        envs: [INT, FUNC, PRE, HOT, PROD]
+        time: '00:15'
+      -
+        name: "Checkpoint: Check AppServer-Logs"
+        tags: [DEPLOY]
+        envs: [INT, FUNC, PRE, HOT, PROD]
+        time: '00:05'
+      -
+        name: "Modul test"
+        hints: "Start Component and log in successfully"
+        tags: [DEPLOY, CONFIG]
+        envs: [INT, FUNC, PRE, HOT, PROD]
+        time: '00:15'
+  -
+    typ: Spring-Batch
+    actions:
+      -
+        name: "Create Release-Build via Gitlab-Tag into maven-approval"
+        hints: '"Link Howto in wiki or to tool (Gitlab)"'
+        tags: [DEPLOY]
+        envs: [INT]
+        time: '00:10'
+      -
+        name: "Checkpoint: Deployment artifact in maven-approval?"
+        hints: "Check Nexus"
+        tags: [DEPLOY]
+        envs: [INT]
+        time: '00:05'
+      -
+        name: "Stage deployment artifact to maven-prod"
+        hints: '"Link Howto in wiki or to tool (pipeline)"'
+        tags: [DEPLOY]
+        envs: [PROD]
+        time: '00:10'
+      -
+        name: "Checkpoint: Deployment artifact in maven-prod?"
+        hints: "Check Nexus"
+        tags: [DEPLOY]
+        envs: [PROD]
+        time: '00:05'
+      -
+        name: "Prepare configuration application.properties in Git"
+        hints: '"Link to git-project"'
+        tags: [CONFIG]
+        envs: [INT, FUNC, PRE, HOT, PROD]
+        time: '00:10'
+      -
+        name: "Ansible-Deploy"
+        hints: '"Link Howto in wiki or to tool"'
+        tags: [DEPLOY, CONFIG]
+        envs: [INT, FUNC, PRE, HOT, PROD]
+        time: '00:15'
+      -
+        name: "(Optional) Modul test: Dry run"
+        hints: '"Link Howto in wiki or to tool"'
+        tags: [DEPLOY, CONFIG]
+        envs: [INT, FUNC, PRE, HOT, PROD]
+        time: '00:15'
+  -
+    typ: Mule-Adapter
+    actions:
+      -
+        name: "Create Release-Build via Gitlab-Tag into maven-approval"
+        hints: '"Link Howto in wiki or to tool (Gitlab)"'
+        tags: [DEPLOY]
+        envs: [INT]
+        time: '00:10'
+      -
+        name: "Checkpoint: Deployment artifact in maven-approval?"
+        hints: "Check Nexus"
+        tags: [DEPLOY]
+        envs: [INT]
+        time: '00:05'
+      -
+        name: "Stage deployment artifact to maven-prod"
+        hints: '"Link Howto in wiki or to tool (pipeline)"'
+        tags: [DEPLOY]
+        envs: [PROD]
+        time: '00:10'
+      -
+        name: "Checkpoint: Deployment artifact in maven-prod?"
+        hints: "Check Nexus"
+        tags: [DEPLOY]
+        envs: [PROD]
+        time: '00:05'
+      -
+        name: "Proxy Configuration via Mail?"
+        tags: [DEPLOY]
+        envs: [INT, FUNC]
+        time: '00:10'
+      -
+        name: "Proxy Configuration via Change?"
+        tags: [DEPLOY]
+        envs: [PRE, HOT, PROD]
+        time: '00:10'
+      -
+        name: "Prepare configuration in Git"
+        hints: '"Link to git-project"'
+        tags: [CONFIG]
+        envs: [INT, FUNC, PRE, HOT, PROD]
+        time: '00:10'
+      -
+        name: "Ansible-Deploy"
+        hints: '"Link Howto in wiki or to tool"'
+        tags: [DEPLOY, CONFIG]
+        envs: [INT, FUNC, PRE, HOT, PROD]
+        time: '00:15'
+      -
+        name: "Checkpoint: Check Mule Server-Logs"
+        tags: [DEPLOY]
+        envs: [INT, FUNC, PRE, HOT, PROD]
+        time: '00:10'
+  -
+    typ: CTM-Workflow
+    actions:
+      -
+        name: "(Optional) Request for an new workflow"
+        hints: "Ask workflow manager"
+        envs: [INT]
+        time: '00:20'
+      -
+        name: "Start workflow if requested by business unit"
+        envs: [FUNC]
+        time: '00:20'
+      -
+        name: "Promote workflow via Change"
+        envs: [PRE,PROD]
+        time: '00:20'
+      -
+        name: "Change activities processed?"
+        envs: [PROD]
+        time: '00:20'
+      -
+        name: "(Optional) Run via workflow mgmt?"
+        hints: "Requested by business unit via ticket"
+        envs: [PRE,PROD]
+        time: '00:20'

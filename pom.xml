@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.jk.project.tools</groupId>
+    <artifactId>delivery-master</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.github.mike10004</groupId>
+                <artifactId>concatenate-maven-plugin</artifactId>
+                <version>0.4</version>
+                <executions>
+                    <execution>
+                        <id>concatenate-css-files</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>cat</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <fileset>
+                                    <directory>${project.basedir}/src/main/resources</directory>
+                                    <orderingStrategy>strict</orderingStrategy>
+                                    <includes>
+                                        <include>instances-model.yml</include>
+                                        <include>components-model.yml</include>
+                                    </includes>
+                                </fileset>
+                            </sources>
+                            <outputFile>${project.build.directory}/concat-model.yml</outputFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.github.vboxnick</groupId>
+                <artifactId>yaml-codegen-maven</artifactId>
+                <version>0.0.10</version>
+                <configuration>
+                    <models>
+                        <model>
+                            <file>${project.build.directory}/concat-model.yml</file>
+                            <outputs>
+                                <output>
+                                    <tmpl>${project.basedir}/src/main/resources/delivery.ftl</tmpl>
+                                    <dst>${project.build.directory}/delivery.csv</dst>
+                                </output>
+                            </outputs>
+                        </model>
+                    </models>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
