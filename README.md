@@ -17,7 +17,7 @@ The characteristics of a release are the defined environments you will go though
 environments: [INT, FUNC, PRE, PROD]
 
 # define necessary components and their caracteristics for release
-# possible tags: [DEPLOY, DB, CONFIG], if tags is not set thea all actions are considered by default
+# possible tags: [DEPLOY, DB, CONFIG], if tags is not set thea all activities are considered by default
 instances:
   -
     name: Program1

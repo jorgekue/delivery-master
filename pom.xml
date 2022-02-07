@@ -32,12 +32,12 @@
                                     <directory>${project.basedir}/src/main/resources</directory>
                                     <orderingStrategy>strict</orderingStrategy>
                                     <includes>
-                                        <include>instances-model.yml</include>
-                                        <include>components-model.yml</include>
+                                        <include>release.yml</include>
+                                        <include>activities.yml</include>
                                     </includes>
                                 </fileset>
                             </sources>
-                            <outputFile>${project.build.directory}/concat-model.yml</outputFile>
+                            <outputFile>${project.build.directory}/model.yml</outputFile>
                         </configuration>
                     </execution>
                 </executions>
@@ -49,7 +49,7 @@
                 <configuration>
                     <models>
                         <model>
-                            <file>${project.build.directory}/concat-model.yml</file>
+                            <file>${project.build.directory}/model.yml</file>
                             <outputs>
                                 <output>
                                     <tmpl>${project.basedir}/src/main/resources/delivery.ftl</tmpl>

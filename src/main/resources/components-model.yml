@@ -1,6 +1,6 @@
 
-# model definitions of general actions 4 environments before considering any component
-general_pre_actions:
+# model definitions of general activities 4 environments before considering any component
+general_pre_activities:
   -
     name: "Changes in Change-Mgmt-Tool created?"
     envs: [PRE]
@@ -11,7 +11,7 @@ general_pre_actions:
     envs: [PROD]
     time: '00:15'
   -
-    name: "Smoke integration tests IT 4 whole system - before release actions"
+    name: "Smoke integration tests IT 4 whole system - before release activities"
     envs: [INT, FUNC, PRE, HOT, PROD]
     hints: '"Link 2 wiki with test description or tool 4 automated tests"'
     time: '00:10'
@@ -35,10 +35,10 @@ general_pre_actions:
     time: '00:10'
     hints: "Request to responsible DBAs"
 
-# model definitions of general actions 4 environments after considering any component
-general_post_actions:
+# model definitions of general activities 4 environments after considering any component
+general_post_activities:
   -
-    name: "Smoke integration tests IT 4 whole system - after release actions"
+    name: "Smoke integration tests IT 4 whole system - after release activities"
     envs: [INT, FUNC, PRE, HOT, PROD]
     hints: '"Link 2 wiki with test description or tool 4 automated tests"'
     time: '00:10'
@@ -71,11 +71,11 @@ general_post_actions:
     envs: [PROD]
     time: '00:15'
 
-# model definitions of component based actions
+# model definitions of component based activities
 components:
   -
-    typ: Win-EXE
-    actions:
+    componentType: EXE
+    activities:
       -
         name: "Provide deployment artifact in maven-snapshot"
         hints: '"Link Howto in wiki"'
@@ -125,8 +125,8 @@ components:
         envs: [INT]
         time: '00:15'
   -
-    typ: Wildfly-EAR
-    actions:
+    componentType: EAR
+    activities:
       -
         name: "Prepare configuration in Git"
         hints: '"Link to git-project"'
@@ -181,8 +181,8 @@ components:
         envs: [INT, FUNC, PRE, HOT, PROD]
         time: '00:15'
   -
-    typ: Spring-Batch
-    actions:
+    componentType: Spring-Batch
+    activities:
       -
         name: "Create Release-Build via Gitlab-Tag into maven-approval"
         hints: '"Link Howto in wiki or to tool (Gitlab)"'
@@ -226,8 +226,8 @@ components:
         envs: [INT, FUNC, PRE, HOT, PROD]
         time: '00:15'
   -
-    typ: Mule-Adapter
-    actions:
+    componentType: Mule-Adapter
+    activities:
       -
         name: "Create Release-Build via Gitlab-Tag into maven-approval"
         hints: '"Link Howto in wiki or to tool (Gitlab)"'
@@ -280,8 +280,8 @@ components:
         envs: [INT, FUNC, PRE, HOT, PROD]
         time: '00:10'
   -
-    typ: CTM-Workflow
-    actions:
+    componentType: CTM-Workflow
+    activities:
       -
         name: "(Optional) Request for an new workflow"
         hints: "Ask workflow manager"
