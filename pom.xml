@@ -6,7 +6,7 @@
 
     <groupId>com.jk.project.tools</groupId>
     <artifactId>delivery-master</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <scm>
         <connection>scm:git:https://github.com/jorgekue/delivery-master</connection>
