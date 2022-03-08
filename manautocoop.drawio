@@ -1,0 +1,98 @@
+<mxfile host="app.diagrams.net" modified="2022-03-04T09:09:52.991Z" agent="5.0 (Windows)" etag="4IXZ0XBiBXiLwSNKdtS1" version="16.6.5" type="github">
+  <diagram id="m8o0-chepu20utNK2lxJ" name="Page-1">
+    <mxGraphModel dx="1416" dy="709" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-25" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="ARTUj6qmTOPSoX0qcCg8-1" target="ARTUj6qmTOPSoX0qcCg8-7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-28" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="ARTUj6qmTOPSoX0qcCg8-1" target="ARTUj6qmTOPSoX0qcCg8-10" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-30" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="ARTUj6qmTOPSoX0qcCg8-1" target="ARTUj6qmTOPSoX0qcCg8-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-34" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="ARTUj6qmTOPSoX0qcCg8-1" target="ARTUj6qmTOPSoX0qcCg8-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-37" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="ARTUj6qmTOPSoX0qcCg8-1" target="ARTUj6qmTOPSoX0qcCg8-14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-39" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="ARTUj6qmTOPSoX0qcCg8-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="220" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-42" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="ARTUj6qmTOPSoX0qcCg8-1" target="ARTUj6qmTOPSoX0qcCg8-16" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-58" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="ARTUj6qmTOPSoX0qcCg8-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="220" y="330.0000000000001" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-1" value="&lt;div&gt;Integrator /&lt;/div&gt;&lt;div&gt;Release Manager&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
+          <mxGeometry x="49" y="219" width="31" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-32" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="ARTUj6qmTOPSoX0qcCg8-2" target="ARTUj6qmTOPSoX0qcCg8-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-56" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="ARTUj6qmTOPSoX0qcCg8-2" target="ARTUj6qmTOPSoX0qcCg8-53" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-2" value="CI/CD-Engine" style="label;whiteSpace=wrap;html=1;image=img/clipart/Gear_128x128.png" parent="1" vertex="1">
+          <mxGeometry x="637" y="221" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-20" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" target="ARTUj6qmTOPSoX0qcCg8-18" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="380.5" y="60" as="sourcePoint" />
+            <mxPoint x="381" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-16" value="FUNC: Manual PreActivities Components" style="whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="221" y="290" width="320" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-50" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="ARTUj6qmTOPSoX0qcCg8-17" target="ARTUj6qmTOPSoX0qcCg8-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-17" value="FUNC: Approval Environment" style="whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="221" y="320" width="320" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-18" value="..." style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" parent="1" vertex="1">
+          <mxGeometry x="331" y="407" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-7" value="INT: Manual GeneralPreActivities" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="221" y="80" width="320" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-8" value="INT: Manual PostActivities Components" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="221" y="200" width="320" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-10" value="INT: Manual PreActivities Components" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="221" y="110" width="320" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-31" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="1" source="ARTUj6qmTOPSoX0qcCg8-11" target="ARTUj6qmTOPSoX0qcCg8-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-11" value="INT: Approval Environment" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="221" y="140" width="320" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-12" value="INT: Jobs GeneralPre, Components, GeneralPost" style="whiteSpace=wrap;html=1;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="221" y="170" width="320" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-14" value="INT: Manual GeneralPostActivities" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="221" y="230" width="320" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-15" value="FUNC: Manual GeneralPreActivities" style="whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="221" y="260" width="320" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-51" value="..." style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" parent="1" vertex="1">
+          <mxGeometry x="560" y="320" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ARTUj6qmTOPSoX0qcCg8-53" value="INT: Jobs GeneralPre, Components, GeneralPost" style="whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="221" y="350" width="320" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

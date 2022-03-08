@@ -1,0 +1,68 @@
+Environment;Component;Time;Activity;Description;Status;Hints
+INT;General;00:00;;;;
+INT;General;00:10;BackupDB;(optional) DB-Backup;;Request to responsible DBAs
+INT;Program1;00:00;Version 1.0.6;;;
+INT;Program1;00:10;Configuration;Prepare configuration in Git;;"Link to Git-project"
+INT;Program3;00:00;Version 1.2.7;;;
+INT;Program3;00:15;ProvideArtifact;Provide deployment artifact in Snapshot-Repo;;"Link Howto in wiki"
+INT;Program3;00:15;Configuration;Prepare configuration in Git;;"Link to Git-project"
+INT;AdapterC;00:00;Version 1.2.0;;;
+INT;General;10:00;Approval;Approval for Environment INT;;Approval in your GitHub-Environments
+INT;Program1;00:00;Version 1.0.6;;;
+INT;Program1;00:05;CheckLogs;Checkpoint: Check AppServer-Logs;;
+INT;Program3;00:00;Version 1.2.7;;;
+INT;Program3;00:15;CheckVersion;Manually Checkpoint: Correct Version installed;;Check logs
+INT;Program3;00:15;ModulTest;Modul test;;Start Component and log in successfully
+INT;AdapterC;00:00;Version 1.2.0;;;
+INT;AdapterC;00:10;CheckLogs;Checkpoint: Check Mule Server-Logs;;
+FUNC;General;00:00;;;;
+FUNC;General;00:10;BackupDB;(optional) DB-Backup;;Request to responsible DBAs
+FUNC;Program1;00:00;Version 1.0.6;;;
+FUNC;Program1;00:10;Configuration;Prepare configuration in Git;;"Link to Git-project"
+FUNC;Program3;00:00;Version 1.2.7;;;
+FUNC;Program3;00:15;Configuration;Prepare configuration in Git;;"Link to Git-project"
+FUNC;AdapterC;00:00;Version 1.2.0;;;
+FUNC;General;10:00;Approval;Approval for Environment FUNC;;Approval in your GitHub-Environments
+FUNC;Program1;00:00;Version 1.0.6;;;
+FUNC;Program1;00:05;CheckLogs;Checkpoint: Check AppServer-Logs;;
+FUNC;Program3;00:00;Version 1.2.7;;;
+FUNC;Program3;00:15;CheckVersion;Manually Checkpoint: Correct Version installed;;Check logs
+FUNC;Program3;00:15;ModulTest;Modul test;;Start Component and log in successfully
+FUNC;AdapterC;00:00;Version 1.2.0;;;
+FUNC;AdapterC;00:10;CheckLogs;Checkpoint: Check Mule Server-Logs;;
+PRE;General;00:00;;;;
+PRE;General;00:30;ChangesCreatedQuestion;Changes in Change-Mgmt-Tool created?;;Ensure, all required changes are created
+PRE;General;00:10;BackupDB;(optional) DB-Backup;;Request to responsible DBAs
+PRE;Program1;00:00;Version 1.0.6;;;
+PRE;Program1;00:10;Configuration;Prepare configuration in Git;;"Link to Git-project"
+PRE;Program3;00:00;Version 1.2.7;;;
+PRE;Program3;00:15;Configuration;Prepare configuration in Git;;"Link to Git-project"
+PRE;AdapterC;00:00;Version 1.2.0;;;
+PRE;General;10:00;Approval;Approval for Environment PRE;;Approval in your GitHub-Environments
+PRE;Program1;00:00;Version 1.0.6;;;
+PRE;Program1;00:05;CheckLogs;Checkpoint: Check AppServer-Logs;;
+PRE;Program3;00:00;Version 1.2.7;;;
+PRE;Program3;00:15;CheckVersion;Manually Checkpoint: Correct Version installed;;Check logs
+PRE;Program3;00:15;ModulTest;Modul test;;Start Component and log in successfully
+PRE;AdapterC;00:00;Version 1.2.0;;;
+PRE;AdapterC;00:10;CheckLogs;Checkpoint: Check Mule Server-Logs;;
+PROD;General;00:00;;;;
+PROD;General;00:15;ChangeMgrApproval;Changes: Ensure approval by Change Mgr;;
+PROD;General;00:10;BackupDB;(optional) DB-Backup;;Request to responsible DBAs
+PROD;Program1;00:00;Version 1.0.6;;;
+PROD;Program1;00:10;Configuration;Prepare configuration in Git;;"Link to Git-project"
+PROD;Program3;00:00;Version 1.2.7;;;
+PROD;Program3;00:15;Configuration;Prepare configuration in Git;;"Link to Git-project"
+PROD;AdapterC;00:00;Version 1.2.0;;;
+PROD;General;10:00;Approval;Approval for Environment PROD;;Approval in your GitHub-Environments
+PROD;Program1;00:00;Version 1.0.6;;;
+PROD;Program1;00:05;CheckLogs;Checkpoint: Check AppServer-Logs;;
+PROD;Program3;00:00;Version 1.2.7;;;
+PROD;Program3;00:15;CheckVersion;Manually Checkpoint: Correct Version installed;;Check logs
+PROD;Program3;00:15;ModulTest;Modul test;;Start Component and log in successfully
+PROD;AdapterC;00:00;Version 1.2.0;;;
+PROD;AdapterC;00:10;CheckLogs;Checkpoint: Check Mule Server-Logs;;
+PROD;General;00:00;;;;
+PROD;General;00:15;CompleteChanges;Complete Changes in Change Mgmt-Tool;;
+
+

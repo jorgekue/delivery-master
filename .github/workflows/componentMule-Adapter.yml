@@ -1,0 +1,52 @@
+name: Mule-Adapter Activities Workflow
+on:
+  workflow_call:
+    inputs:
+      env:
+        required: true
+        type: string
+      name:
+        required: true
+        type: string
+      version:
+        required: true
+        type: string
+      tags:
+        required: false
+        type: string
+
+jobs:
+  Mule-Adapter-ReleaseBuild:
+    if: ${{ ( contains(inputs.tags, 'DEPLOY') ) && ( contains(inputs.env, 'INT') || contains(inputs.env, 'HOT') ) }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: ReleaseBuild
+        run: echo "ReleaseBuild with params (env=${{ inputs.env }}, name=${{ inputs.name }}, version=${{ inputs.version }})."
+  Mule-Adapter-CheckApprovalRepo:
+    if: ${{ always() && !(contains(needs.*.result, 'failure')) && ( contains(inputs.tags, 'DEPLOY') ) && ( contains(inputs.env, 'INT') || contains(inputs.env, 'HOT') ) }}
+    needs: Mule-Adapter-ReleaseBuild
+    runs-on: ubuntu-latest
+    steps:
+      - name: CheckApprovalRepo
+        run: echo "CheckApprovalRepo with params (env=${{ inputs.env }}, name=${{ inputs.name }}, version=${{ inputs.version }})."
+  Mule-Adapter-StageToProdRepo:
+    if: ${{ always() && !(contains(needs.*.result, 'failure')) && ( contains(inputs.tags, 'DEPLOY') ) && ( contains(inputs.env, 'PROD') ) }}
+    needs: Mule-Adapter-CheckApprovalRepo
+    runs-on: ubuntu-latest
+    steps:
+      - name: StageToProdRepo
+        run: echo "StageToProdRepo with params (env=${{ inputs.env }}, name=${{ inputs.name }}, version=${{ inputs.version }})."
+  Mule-Adapter-CheckProdRepo:
+    if: ${{ always() && !(contains(needs.*.result, 'failure')) && ( contains(inputs.tags, 'DEPLOY') ) && ( contains(inputs.env, 'PROD') ) }}
+    needs: Mule-Adapter-StageToProdRepo
+    runs-on: ubuntu-latest
+    steps:
+      - name: CheckProdRepo
+        run: echo "CheckProdRepo with params (env=${{ inputs.env }}, name=${{ inputs.name }}, version=${{ inputs.version }})."
+  Mule-Adapter-DeployArtifact:
+    if: ${{ always() && !(contains(needs.*.result, 'failure')) && ( contains(inputs.tags, 'DEPLOY') || contains(inputs.tags, 'CONFIG') ) && ( contains(inputs.env, 'INT') || contains(inputs.env, 'FUNC') || contains(inputs.env, 'PRE') || contains(inputs.env, 'HOT') || contains(inputs.env, 'PROD') ) }}
+    needs: Mule-Adapter-CheckProdRepo
+    runs-on: ubuntu-latest
+    steps:
+      - name: DeployArtifact
+        run: echo "DeployArtifact with params (env=${{ inputs.env }}, name=${{ inputs.name }}, version=${{ inputs.version }})."

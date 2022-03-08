@@ -1,0 +1,36 @@
+name: Pre Activities Workflow
+on:
+  workflow_call:
+    inputs:
+      env:
+        required: true
+        type: string
+jobs:
+  PRE-IntegrationTestsIT:
+    if: ${{ ( contains(inputs.env, 'INT') || contains(inputs.env, 'FUNC') || contains(inputs.env, 'PRE') || contains(inputs.env, 'HOT') || contains(inputs.env, 'PROD') ) }}
+    environment: ${{ inputs.env }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: IntegrationTestsIT
+        run: echo "IntegrationTestsIT with params (env=${{ inputs.env }})."
+  PRE-StartOfMaintenanceMailParties:
+    if: ${{ always() && !(contains(needs.*.result, 'failure')) && ( contains(inputs.env, 'INT') || contains(inputs.env, 'FUNC') || contains(inputs.env, 'PRE') || contains(inputs.env, 'HOT') || contains(inputs.env, 'PROD') ) }}
+    needs: PRE-IntegrationTestsIT
+    runs-on: ubuntu-latest
+    steps:
+      - name: StartOfMaintenanceMailParties
+        run: echo "StartOfMaintenanceMailParties with params (env=${{ inputs.env }})."
+  PRE-StartOfMaintenanceMailMon:
+    if: ${{ always() && !(contains(needs.*.result, 'failure')) && ( contains(inputs.env, 'PROD') ) }}
+    needs: PRE-StartOfMaintenanceMailParties
+    runs-on: ubuntu-latest
+    steps:
+      - name: StartOfMaintenanceMailMon
+        run: echo "StartOfMaintenanceMailMon with params (env=${{ inputs.env }})."
+  PRE-MaintenancePageOn:
+    if: ${{ always() && !(contains(needs.*.result, 'failure')) && ( contains(inputs.env, 'INT') || contains(inputs.env, 'FUNC') || contains(inputs.env, 'PRE') || contains(inputs.env, 'HOT') || contains(inputs.env, 'PROD') ) }}
+    needs: PRE-StartOfMaintenanceMailMon
+    runs-on: ubuntu-latest
+    steps:
+      - name: MaintenancePageOn
+        run: echo "MaintenancePageOn with params (env=${{ inputs.env }})."

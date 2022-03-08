@@ -1,0 +1,138 @@
+name: Release Workflow
+on:
+  workflow_dispatch
+
+jobs:
+  INT-PreActivities:
+    uses: ./.github/workflows/activitiesPre.yml
+    with:
+      env: INT
+  INT-Program1:
+    uses: ./.github/workflows/componentEAR.yml
+    needs: INT-PreActivities
+    with:
+      env: INT
+      name: Program1
+      version: 1.0.6
+      tags: 'DEPLOY,DB,CONFIG'
+  INT-Program3:
+    uses: ./.github/workflows/componentEXE.yml
+    needs: INT-PreActivities
+    with:
+      env: INT
+      name: Program3
+      version: 1.2.7
+      tags: 'DEPLOY,DB,CONFIG'
+  INT-AdapterC:
+    uses: ./.github/workflows/componentMule-Adapter.yml
+    needs: INT-PreActivities
+    with:
+      env: INT
+      name: AdapterC
+      version: 1.2.0
+      tags: 'DEPLOY'
+  INT-PostActivities:
+    uses: ./.github/workflows/activitiesPost.yml
+    with:
+      env: INT
+    needs: [INT-Program1,INT-Program3,INT-AdapterC]
+  FUNC-PreActivities:
+    uses: ./.github/workflows/activitiesPre.yml
+    with:
+      env: FUNC
+  FUNC-Program1:
+    uses: ./.github/workflows/componentEAR.yml
+    needs: FUNC-PreActivities
+    with:
+      env: FUNC
+      name: Program1
+      version: 1.0.6
+      tags: 'DEPLOY,DB,CONFIG'
+  FUNC-Program3:
+    uses: ./.github/workflows/componentEXE.yml
+    needs: FUNC-PreActivities
+    with:
+      env: FUNC
+      name: Program3
+      version: 1.2.7
+      tags: 'DEPLOY,DB,CONFIG'
+  FUNC-AdapterC:
+    uses: ./.github/workflows/componentMule-Adapter.yml
+    needs: FUNC-PreActivities
+    with:
+      env: FUNC
+      name: AdapterC
+      version: 1.2.0
+      tags: 'DEPLOY'
+  FUNC-PostActivities:
+    uses: ./.github/workflows/activitiesPost.yml
+    with:
+      env: FUNC
+    needs: [FUNC-Program1,FUNC-Program3,FUNC-AdapterC]
+  PRE-PreActivities:
+    uses: ./.github/workflows/activitiesPre.yml
+    with:
+      env: PRE
+  PRE-Program1:
+    uses: ./.github/workflows/componentEAR.yml
+    needs: PRE-PreActivities
+    with:
+      env: PRE
+      name: Program1
+      version: 1.0.6
+      tags: 'DEPLOY,DB,CONFIG'
+  PRE-Program3:
+    uses: ./.github/workflows/componentEXE.yml
+    needs: PRE-PreActivities
+    with:
+      env: PRE
+      name: Program3
+      version: 1.2.7
+      tags: 'DEPLOY,DB,CONFIG'
+  PRE-AdapterC:
+    uses: ./.github/workflows/componentMule-Adapter.yml
+    needs: PRE-PreActivities
+    with:
+      env: PRE
+      name: AdapterC
+      version: 1.2.0
+      tags: 'DEPLOY'
+  PRE-PostActivities:
+    uses: ./.github/workflows/activitiesPost.yml
+    with:
+      env: PRE
+    needs: [PRE-Program1,PRE-Program3,PRE-AdapterC]
+  PROD-PreActivities:
+    uses: ./.github/workflows/activitiesPre.yml
+    with:
+      env: PROD
+  PROD-Program1:
+    uses: ./.github/workflows/componentEAR.yml
+    needs: PROD-PreActivities
+    with:
+      env: PROD
+      name: Program1
+      version: 1.0.6
+      tags: 'DEPLOY,DB,CONFIG'
+  PROD-Program3:
+    uses: ./.github/workflows/componentEXE.yml
+    needs: PROD-PreActivities
+    with:
+      env: PROD
+      name: Program3
+      version: 1.2.7
+      tags: 'DEPLOY,DB,CONFIG'
+  PROD-AdapterC:
+    uses: ./.github/workflows/componentMule-Adapter.yml
+    needs: PROD-PreActivities
+    with:
+      env: PROD
+      name: AdapterC
+      version: 1.2.0
+      tags: 'DEPLOY'
+  PROD-PostActivities:
+    uses: ./.github/workflows/activitiesPost.yml
+    with:
+      env: PROD
+    needs: [PROD-Program1,PROD-Program3,PROD-AdapterC]
+

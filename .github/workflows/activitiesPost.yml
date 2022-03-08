@@ -1,0 +1,49 @@
+name: Post Activities Workflow
+on:
+  workflow_call:
+    inputs:
+      env:
+        required: true
+        type: string
+jobs:
+  POST-IntegrationTestsIT:
+    if: ${{ ( contains(inputs.env, 'INT') || contains(inputs.env, 'FUNC') || contains(inputs.env, 'PRE') || contains(inputs.env, 'HOT') || contains(inputs.env, 'PROD') ) }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: IntegrationTestsIT
+        run: echo "IntegrationTestsIT with params (env=${{ inputs.env }})."
+  POST-MaintenancePageOff:
+    if: ${{ always() && !(contains(needs.*.result, 'failure')) && ( contains(inputs.env, 'INT') || contains(inputs.env, 'FUNC') || contains(inputs.env, 'PRE') || contains(inputs.env, 'HOT') || contains(inputs.env, 'PROD') ) }}
+    needs: POST-IntegrationTestsIT
+    runs-on: ubuntu-latest
+    steps:
+      - name: MaintenancePageOff
+        run: echo "MaintenancePageOff with params (env=${{ inputs.env }})."
+  POST-EndOfMaintenanceMailParties:
+    if: ${{ always() && !(contains(needs.*.result, 'failure')) && ( contains(inputs.env, 'INT') || contains(inputs.env, 'FUNC') || contains(inputs.env, 'PRE') || contains(inputs.env, 'HOT') || contains(inputs.env, 'PROD') ) }}
+    needs: POST-MaintenancePageOff
+    runs-on: ubuntu-latest
+    steps:
+      - name: EndOfMaintenanceMailParties
+        run: echo "EndOfMaintenanceMailParties with params (env=${{ inputs.env }})."
+  POST-FunctionalTestMail:
+    if: ${{ always() && !(contains(needs.*.result, 'failure')) && ( contains(inputs.env, 'FUNC') ) }}
+    needs: POST-EndOfMaintenanceMailParties
+    runs-on: ubuntu-latest
+    steps:
+      - name: FunctionalTestMail
+        run: echo "FunctionalTestMail with params (env=${{ inputs.env }})."
+  POST-ApprovalTestMail:
+    if: ${{ always() && !(contains(needs.*.result, 'failure')) && ( contains(inputs.env, 'PRE') || contains(inputs.env, 'HOT') ) }}
+    needs: POST-FunctionalTestMail
+    runs-on: ubuntu-latest
+    steps:
+      - name: ApprovalTestMail
+        run: echo "ApprovalTestMail with params (env=${{ inputs.env }})."
+  POST-EndOfMaintenanceMailMon:
+    if: ${{ always() && !(contains(needs.*.result, 'failure')) && ( contains(inputs.env, 'PROD') ) }}
+    needs: POST-ApprovalTestMail
+    runs-on: ubuntu-latest
+    steps:
+      - name: EndOfMaintenanceMailMon
+        run: echo "EndOfMaintenanceMailMon with params (env=${{ inputs.env }})."

@@ -1,0 +1,45 @@
+name: EXE Activities Workflow
+on:
+  workflow_call:
+    inputs:
+      env:
+        required: true
+        type: string
+      name:
+        required: true
+        type: string
+      version:
+        required: true
+        type: string
+      tags:
+        required: false
+        type: string
+
+jobs:
+  EXE-StageToProdRepo:
+    if: ${{ ( contains(inputs.tags, 'DEPLOY') ) && ( contains(inputs.env, 'PROD') ) }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: StageToProdRepo
+        run: echo "StageToProdRepo with params (env=${{ inputs.env }}, name=${{ inputs.name }}, version=${{ inputs.version }})."
+  EXE-FlywayMigrateDB:
+    if: ${{ always() && !(contains(needs.*.result, 'failure')) && ( contains(inputs.tags, 'DB') ) && ( contains(inputs.env, 'INT') || contains(inputs.env, 'FUNC') || contains(inputs.env, 'PRE') || contains(inputs.env, 'HOT') || contains(inputs.env, 'PROD') ) }}
+    needs: EXE-StageToProdRepo
+    runs-on: ubuntu-latest
+    steps:
+      - name: FlywayMigrateDB
+        run: echo "FlywayMigrateDB with params (env=${{ inputs.env }}, name=${{ inputs.name }}, version=${{ inputs.version }})."
+  EXE-DeployArtifact:
+    if: ${{ always() && !(contains(needs.*.result, 'failure')) && ( contains(inputs.tags, 'DEPLOY') || contains(inputs.tags, 'CONFIG') ) && ( contains(inputs.env, 'INT') || contains(inputs.env, 'FUNC') || contains(inputs.env, 'PRE') || contains(inputs.env, 'HOT') || contains(inputs.env, 'PROD') ) }}
+    needs: EXE-FlywayMigrateDB
+    runs-on: ubuntu-latest
+    steps:
+      - name: DeployArtifact
+        run: echo "DeployArtifact with params (env=${{ inputs.env }}, name=${{ inputs.name }}, version=${{ inputs.version }})."
+  EXE-StagingToApprovalRepo:
+    if: ${{ always() && !(contains(needs.*.result, 'failure')) && ( contains(inputs.tags, 'DEPLOY') ) && ( contains(inputs.env, 'INT') || contains(inputs.env, 'HOT') ) }}
+    needs: EXE-DeployArtifact
+    runs-on: ubuntu-latest
+    steps:
+      - name: StagingToApprovalRepo
+        run: echo "StagingToApprovalRepo with params (env=${{ inputs.env }}, name=${{ inputs.name }}, version=${{ inputs.version }})."
