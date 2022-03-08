@@ -6,13 +6,13 @@
 
     <groupId>com.jk.project.tools</groupId>
     <artifactId>delivery-master</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <scm>
         <connection>scm:git:https://github.com/jorgekue/delivery-master</connection>
     </scm>
     <properties>
-        <version.FmExtensions>0.0.1-SNAPSHOT</version.FmExtensions>
+        <version.FmExtensions>0.0.1</version.FmExtensions>
     </properties>
 
     <build>
