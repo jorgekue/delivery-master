@@ -4,22 +4,22 @@
 - [Introduction](#introduction)  
 - [Preparation](#preparation)  
 - [Release Definition](#release-definition)  
-- [Generation CSV-file](#generation-csv-file)  
+- [Generation CSV file](#generation-csv-file)  
 - [Generation GitHub Action-files](#generation-github-action-files)  
   - [Reusable Component Workflows](#reusable-component-workflows)  
   - [Release Workflow](#release-workflow)  
 - [Links](#links)
 # Introduction
-The delivery-master helps you master the complete releases of your system consisting of different components to be deployed across different staging environments. 
-Typically we use environments like Integration (INT), Functional, Preproduction (PRE) and Production (PROD). 
-In case of a hot fix we may use only a dedicated Hotfix environment as the way to Production.
-Dependent on the features the deployment aspects could be different to each component: Do we have to migrate the database, to change the configuration or to make the deployment of new code?
-Imagine a system like the following:
+The delivery-master helps you master the complete releases of your system consisting of different components to be deployed across different staging environments.
+Typically we use environments like Integration (INT), Functional (FUNC), Preproduction (PRE) and Production (PROD).
+Whereas in case of a hot fix we want to use only a dedicated Hotfix environment as the way to Production. 
+Dependent on the features the deployment aspects could be different to each component: 
+Do we have to migrate the database, to change the configuration or to make the deployment of new code? Imagine a system like the following:
 
 ![system](./system.png)
 
 There are two main use cases considered within the delivery master:
-1. Generates a complete and consistent check list with necessary (manual) activities as csv-file you can then convert into typically spreadsheet file like an Excel file and make some beautifying with it for your convenience as you can see below. You find a generated example csv-file with name deliveryChecklist.csv in the main folder of this project. 
+1. Generates a complete and consistent check list with necessary (manual) activities as CSV file you can then convert into typically spreadsheet file like an Excel file and make some beautifying with it for your convenience as you can see below. You find a generated example CSV file with name deliveryChecklist.csv in the main folder of this project. 
 
 ![check list](./checkList.png)
 
@@ -30,9 +30,10 @@ There are two main use cases considered within the delivery master:
 # Preparation  
 
 First define basically the necessary activities of the component types of your system or infrastructure in the model file activities.yml.
-Component type could be an application server enterprise archive (EAR), a Windows Program (EXE), a Spring Boot Service, a Spring Batch, a Mule-Adapter, a workflow artifact, etc.
+Component type could be an Application Server Enterprise Archive (EAR), a Windows Program (EXE), a Spring Boot Service, a Spring Batch, an Integration Platform Adapter, a workflow artifact, etc.
 Define also necessary preparing or concluding activities of the stages.
-See example file /src/main/resources/activities.yml. The following excerpt gives an impression. 
+Besides the self-explanatory attributes we define basically to which environment (attribute 'envs') and optionally to which deployment aspects (attribute 'tags') the activity applies.
+See example file /src/main/resources/activities.yml. The following excerpt gives you a first impression. 
 ```javascript
 # model definitions of component based activities
 componentTypes:
@@ -68,7 +69,8 @@ componentTypes:
 ```
 [Back to Table of Content ](#table-of-content)
 # Release Definition
-For each release we define then the concrete environments we will go through for your release and the concrete components based on the defined component types previously. 
+For each release we define then the concrete environments we will go through for your release and the concrete components based on the defined component types previously.
+We constrain the components to the deployment aspects in the attribute 'tags'.
 See example file /src/main/resources/release.yml.
 Below you find a first impression:
 ```javascript
@@ -77,7 +79,7 @@ Below you find a first impression:
 
 environments: [INT, FUNC, PRE, PROD]
 
-# define necessary components and their caracteristics for release
+# define necessary components and their aspects for release
 # possible tags: [DEPLOY, DB, CONFIG], if tags is not set thea all activities are considered by default
 components:
   -
@@ -93,22 +95,22 @@ components:
 ...
 ```
 [Back to Table of Content ](#table-of-content)
-# Generation CSV-file 
-Generate the delivery plan as CSV-file based on your model files with maven command:  
+# Generation CSV file 
+Generate the delivery check list as CSV file based on your model files with following maven command:  
 `mvn clean generate-sources`  
 
-The generation process is illustrated basically in the image as follows:
+The generation process is illustrated basically in the following image:
 
 ![Generation](./generate.png)
 
-For technical reason we concatenate first the two model files, use then a freemarker template to generate the CSV-File with our required activities.  
+For technical reason we concatenate first the two model files, use then a freemarker template to generate the CSV file with our required activities for the release.  
 [Back to Table of Content ](#table-of-content)
 # Generation GitHub Action-files
 ## Reusable Component Workflows
 For the other main use case first we generate the Reusable Component Workflows based on each component type in our model file with following maven command:  
 `mvn clean generate-sources –DcomponentWorkflows`
 
-For each type we will get a Reusable Workflow file like below:
+For each type we get a Reusable Workflow file like below:
 ```javascript
 name: EAR Activities Workflow
 on:
@@ -144,16 +146,16 @@ jobs:
 ...
 ```
 The generated code is a boilerplate code only.  
-For the beginning there is given a shell used within the steps printing the passed parameters. 
-Dependent on the concrete DevOps-Infrastructure we shall implement concrete GitHub Actions in each job.
+For the beginning there is given a shell used within the steps printing the passed parameters.
+Dependent on the concrete DevOps-Infrastructure we still have to implement concrete GitHub Actions in each job later.
 We will call these Reusable Component Workflows with the different required parameters from a higher level so-called Release Workflow as we will see below.
-The conditions for each job are coming from the modelling in our model files.
+The conditions for each job are coming from the modelled attributes 'envs' and 'tags' of our activities.
 The execution of the jobs are ordered sequential by default, see needs-clause in job definition.
-The preparing and concluding activities will also get their own Reusable Workflow-files. 
+The preparing and concluding activities will also get their own Reusable Workflow files. 
 
 [Back to Table of Content ](#table-of-content)
 ## Release Workflow
-We will generate the higher level Release Workflow with the following command:  
+We will generate the higher levelled Release Workflow with the following command:  
 `mvn clean generate-sources –DrelWorkflow`
 
 The resulting file `releaseWorkflow.yml` looks like the following excerpt:
@@ -198,16 +200,16 @@ jobs:
     needs: [INT-Program1,INT-Program3,INT-AdapterC]
 ...
 ```
-For each environment like INT as shown above the release workflow will begin with the preparing activities. 
+For each environment like INT as shown above the release workflow will begin with the preparing activities (PreActivities). 
 If succeeded then all component based reusable workflows will start parallel.
-If all components based workflows are finished with success the concluding activities are processed.
+If all components based workflows are finished with success the concluding activities (PostActivities) are processed.
 
-In addition with the Release Workflow we will get an additional csv-file with the possibly few remaining interactive activities, see below. You find a generated example csv-file with name manualReleaseActivities.csv in the main folder of this project.    
+In addition with the Release Workflow we will get an additional CSV file with the possibly few remaining interactive activities, see below. You find a generated example CSV file with name manualReleaseActivities.csv in the main folder of this project.    
 
 ![manual activities](./manualActivities.png)
 
 One of the main features of GitHub Actions we are using in this approach are the environments. 
-We define Reviewers in the Protections Rules of each environment and thus get more control over the overall Release Workflow as well as the opportunity to make our manual activities after the current and the next environment.
+We define Reviewers in the Protections Rules of each environment and thus get more control over the overall Release Workflow as well as the opportunity to make our remaining manual activities after the current and the next environment.
 This concept, the conjunction of manual and automated activities is shown in the figure below:  
 
 ![manual and automativ activities in conjunction](./manautocoop.png)
