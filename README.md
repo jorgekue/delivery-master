@@ -104,6 +104,7 @@ The generation process is illustrated basically in the following image:
 ![Generation](./generate.png)
 
 For technical reason we concatenate first the two model files, use then a freemarker template to generate the CSV file with our required activities for the release.  
+
 [Back to Table of Content ](#table-of-content)
 # Generation GitHub Action-files
 ## Reusable Component Workflows
@@ -219,6 +220,7 @@ If the Release Workflow is started we are requested for reviews in each environm
 ![review deployments](./reviewDeployments.png)
 
 After reviews are all done and jobs succeeded, we will get the result as shown above in the introduction.  
+
 [Back to Table of Content ](#table-of-content)
 # Links
 Delivery Master (this project): https://github.com/jorgekue/delivery-master  
