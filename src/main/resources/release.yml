@@ -4,7 +4,7 @@
 environments: [INT, FUNC, PRE, PROD]
 
 # define necessary components and their aspects for release
-# possible tags: [DEPLOY, DB, CONFIG], if tags is not set thea all activities are considered by default
+# possible tags: [DEPLOY, DB, CONFIG], if tags is not set then all activities are considered by default
 components:
   -
     name: Program1
