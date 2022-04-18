@@ -6,12 +6,14 @@ general_pre_activities:
     envs: [PRE, HOT]
     hints: Ensure, all required changes are created
     time: '00:30'
+    role: Coordinator
     execution: "manual"
   -
     name: "ChangeMgrApproval"
     description: "Changes: Ensure approval by Change Mgr"
     envs: [PROD]
     time: '00:15'
+    role: Coordinator
     execution: "manual"
   -
     name: "BackupDB"
@@ -19,6 +21,7 @@ general_pre_activities:
     envs: [INT, FUNC, PRE, HOT, PROD]
     time: '00:10'
     hints: "Request to responsible DBAs"
+    role: Coordinator
     execution: "manual"
   -
     name: "IntegrationTestsIT"
@@ -26,12 +29,14 @@ general_pre_activities:
     envs: [INT, FUNC, PRE, HOT, PROD]
     hints: '"Link 2 wiki with test description or tool for automated tests"'
     time: '00:10'
+    role: Integrator
     execution: "auto"
   -
     name: "StartOfMaintenanceMailParties"
     description: "Send mail starting maintenance to interested parties"
     envs: [INT, FUNC, PRE, HOT, PROD]
     time: '00:05'
+    role: Coordinator
     execution: "auto"
   -
     name: "StartOfMaintenanceMailMon"
@@ -39,6 +44,7 @@ general_pre_activities:
     envs: [PROD]
     time: '00:15'
     hints: '"Link 2 template in wiki"'
+    role: Coordinator
     execution: "auto"
   -
     name: "MaintenancePageOn"
@@ -46,6 +52,7 @@ general_pre_activities:
     envs: [INT, FUNC, PRE, HOT, PROD]
     time: '00:10'
     hints: '"Link 2 template in wiki"'
+    role: Integrator
     execution: "auto"
 
 # model definitions of general activities for environments after considering any component
@@ -56,6 +63,7 @@ general_post_activities:
     envs: [INT, FUNC, PRE, HOT, PROD]
     hints: '"Link to wiki with test description or tool for automated tests"'
     time: '00:10'
+    role: Integrator
     execution: "auto"
   -
     name: "MaintenancePageOff"
@@ -63,12 +71,14 @@ general_post_activities:
     envs: [INT, FUNC, PRE, HOT, PROD]
     time: '00:10'
     hints: '"Link to template in wiki"'
+    role: Integrator
     execution: "auto"
   -
     name: "EndOfMaintenanceMailParties"
     description: "Send mail end of maintenance to interested parties"
     envs: [INT, FUNC, PRE, HOT, PROD]
     time: '00:05'
+    role: Coordinator
     execution: "auto"
   -
     name: "FunctionalTestMail"
@@ -76,6 +86,7 @@ general_post_activities:
     envs: [FUNC]
     time: '00:05'
     hints: "Send mail to business unit and wait for approval"
+    role: Coordinator
     execution: "auto"
   -
     name: "ApprovalTestMail"
@@ -83,6 +94,7 @@ general_post_activities:
     envs: [PRE, HOT]
     time: '00:05'
     hints: "Send mail to business unit and wait for approval"
+    role: Coordinator
     execution: "auto"
   -
     name: "EndOfMaintenanceMailMon"
@@ -90,12 +102,14 @@ general_post_activities:
     envs: [PROD]
     time: '00:15'
     hints: '"Link to template in wiki"'
+    role: Coordinator
     execution: "auto"
   -
     name: "CompleteChanges"
     description: "Complete Changes in Change Mgmt-Tool"
     envs: [PROD]
     time: '00:15'
+    role: Coordinator
     execution: "manual"
 
 # model definitions of component based activities
@@ -110,6 +124,7 @@ componentTypes:
         tags: [CONFIG]
         envs: [INT, FUNC, PRE, HOT, PROD]
         time: '00:10'
+        role: Integrator
         execution: "manualBefore"
       -
         name: "ReleaseBuild"
@@ -118,6 +133,7 @@ componentTypes:
         tags: [DEPLOY]
         envs: [INT, HOT]
         time: '00:10'
+        role: Integrator
         execution: "auto"
       -
         name: "CheckApprovalRepo"
@@ -126,6 +142,7 @@ componentTypes:
         tags: [DEPLOY]
         envs: [INT, HOT]
         time: '00:05'
+        role: Integrator
         execution: "auto"
       -
         name: "StageToProdRepo"
@@ -134,6 +151,7 @@ componentTypes:
         tags: [DEPLOY]
         envs: [PROD]
         time: '00:15'
+        role: Integrator
         execution: "auto"
       -
         name: "CheckProdRepo"
@@ -142,6 +160,7 @@ componentTypes:
         tags: [DEPLOY]
         envs: [PROD]
         time: '00:05'
+        role: Integrator
         execution: "auto"
       -
         name: "FlywayMigrate"
@@ -150,6 +169,7 @@ componentTypes:
         tags: [DB]
         envs: [INT, FUNC, PRE, HOT, PROD]
         time: '00:10'
+        role: Integrator
         execution: "auto"
       -
         name: "DeployArtifact"
@@ -158,6 +178,7 @@ componentTypes:
         tags: [DEPLOY, CONFIG]
         envs: [INT, FUNC, PRE, HOT, PROD]
         time: '00:15'
+        role: Integrator
         execution: "auto"
       -
         name: "ModulTest"
@@ -166,6 +187,7 @@ componentTypes:
         tags: [DEPLOY, CONFIG]
         envs: [INT, FUNC, PRE, HOT, PROD]
         time: '00:15'
+        role: Integrator
         execution: "auto"
       -
         name: "CheckLogs"
@@ -173,6 +195,7 @@ componentTypes:
         tags: [DEPLOY]
         envs: [INT, FUNC, PRE, HOT, PROD]
         time: '00:05'
+        role: Integrator
         execution: "manualAfter"
   -
     componentType: EXE
@@ -184,6 +207,7 @@ componentTypes:
         tags: [DEPLOY]
         envs: [INT, HOT]
         time: '00:15'
+        role: Integrator
         execution: "manualBefore"
       -
         name: "Configuration"
@@ -192,6 +216,7 @@ componentTypes:
         tags: [CONFIG]
         envs: [INT, FUNC, PRE, HOT, PROD]
         time: '00:15'
+        role: Integrator
         execution: "manualBefore"
       -
         name: "StageToProdRepo"
@@ -200,6 +225,7 @@ componentTypes:
         tags: [DEPLOY]
         envs: [PROD]
         time: '00:15'
+        role: Integrator
         execution: "auto"
       -
         name: "FlywayMigrateDB"
@@ -208,6 +234,7 @@ componentTypes:
         tags: [DB]
         envs: [INT, FUNC, PRE, HOT, PROD]
         time: '00:10'
+        role: Integrator
         execution: "auto"
       -
         name: "DeployArtifact"
@@ -216,6 +243,7 @@ componentTypes:
         tags: [DEPLOY, CONFIG]
         envs: [INT, FUNC, PRE, HOT, PROD]
         time: '00:15'
+        role: Integrator
         execution: "auto"
       -
         name: "StagingToApprovalRepo"
@@ -224,6 +252,7 @@ componentTypes:
         tags: [DEPLOY]
         envs: [INT, HOT]
         time: '00:15'
+        role: Integrator
         execution: "auto"
       -
         name: "CheckVersion"
@@ -232,6 +261,7 @@ componentTypes:
         tags: [DEPLOY, CONFIG]
         envs: [INT, FUNC, PRE, HOT, PROD]
         time: '00:15'
+        role: Integrator
         execution: "manualAfter"
       -
         name: "ModulTest"
@@ -240,6 +270,7 @@ componentTypes:
         tags: [DEPLOY, CONFIG]
         envs: [INT, FUNC, PRE, HOT, PROD]
         time: '00:15'
+        role: Integrator
         execution: "manualAfter"
   -
     componentType: Spring-Batch
@@ -251,6 +282,7 @@ componentTypes:
         tags: [CONFIG]
         envs: [INT, FUNC, PRE, HOT, PROD]
         time: '00:10'
+        role: Integrator
         execution: "manualBefore"
       -
         name: "ReleaseBuild"
@@ -259,6 +291,7 @@ componentTypes:
         tags: [DEPLOY]
         envs: [INT, HOT]
         time: '00:10'
+        role: Integrator
         execution: "auto"
       -
         name: "CheckApprovalRepo"
@@ -267,6 +300,7 @@ componentTypes:
         tags: [DEPLOY]
         envs: [INT, HOT]
         time: '00:05'
+        role: Integrator
         execution: "auto"
       -
         name: "StageToProdRepo"
@@ -275,6 +309,7 @@ componentTypes:
         tags: [DEPLOY]
         envs: [PROD]
         time: '00:10'
+        role: Integrator
         execution: "auto"
       -
         name: "CheckProdRepo"
@@ -283,6 +318,7 @@ componentTypes:
         tags: [DEPLOY]
         envs: [PROD]
         time: '00:05'
+        role: Integrator
         execution: "auto"
       -
         name: "DeployArtifact"
@@ -291,6 +327,7 @@ componentTypes:
         tags: [DEPLOY, CONFIG]
         envs: [INT, FUNC, PRE, HOT, PROD]
         time: '00:15'
+        role: Integrator
         execution: "auto"
       -
         name: "ModulTest"
@@ -299,6 +336,7 @@ componentTypes:
         tags: [DEPLOY, CONFIG]
         envs: [INT, FUNC, PRE, HOT, PROD]
         time: '00:15'
+        role: Integrator
         execution: "manualAfter"
   -
     componentType: Mule-Adapter
@@ -310,6 +348,7 @@ componentTypes:
         tags: [CONFIG]
         envs: [INT, FUNC, PRE, HOT, PROD]
         time: '00:10'
+        role: Integrator
         execution: "manualBefore"
       -
         name: "ReleaseBuild"
@@ -318,6 +357,7 @@ componentTypes:
         tags: [DEPLOY]
         envs: [INT, HOT]
         time: '00:10'
+        role: Integrator
         execution: "auto"
       -
         name: "CheckApprovalRepo"
@@ -326,6 +366,7 @@ componentTypes:
         tags: [DEPLOY]
         envs: [INT, HOT]
         time: '00:05'
+        role: Integrator
         execution: "auto"
       -
         name: "StageToProdRepo"
@@ -334,6 +375,7 @@ componentTypes:
         tags: [DEPLOY]
         envs: [PROD]
         time: '00:10'
+        role: Integrator
         execution: "auto"
       -
         name: "CheckProdRepo"
@@ -342,6 +384,7 @@ componentTypes:
         tags: [DEPLOY]
         envs: [PROD]
         time: '00:05'
+        role: Integrator
         execution: "auto"
       -
         name: "DeployArtifact"
@@ -350,6 +393,7 @@ componentTypes:
         tags: [DEPLOY, CONFIG]
         envs: [INT, FUNC, PRE, HOT, PROD]
         time: '00:15'
+        role: Integrator
         execution: "auto"
       -
         name: "CheckLogs"
@@ -357,6 +401,7 @@ componentTypes:
         tags: [DEPLOY]
         envs: [INT, FUNC, PRE, HOT, PROD]
         time: '00:10'
+        role: Integrator
         execution: "manualAfter"
   -
     componentType: CTM-Workflow
@@ -367,24 +412,28 @@ componentTypes:
         hints: "Ask workflow manager"
         envs: [INT]
         time: '00:20'
+        role: Coordinator
         execution: "manualBefore"
       -
         name: "WorkflowRunIT"
         description: "Start workflow if requested by business unit"
         envs: [FUNC]
         time: '00:20'
+        role: Integrator
         execution: "manualAfter"
       -
         name: "PromoteWorkflow"
         description: "Promote workflow via Change"
         envs: [PRE,PROD]
         time: '00:20'
+        role: Coordinator
         execution: "manualBefore"
       -
         name: "ChangeProcessed"
         description: "Change activities processed?"
         envs: [PROD]
         time: '00:20'
+        role: Coordinator
         execution: "manualAfter"
       -
         name: "WorkflowRunMgmt"
@@ -392,4 +441,5 @@ componentTypes:
         hints: "Requested by business unit via ticket"
         envs: [PRE,PROD]
         time: '00:20'
+        role: Coordinator
         execution: "manualAfter"

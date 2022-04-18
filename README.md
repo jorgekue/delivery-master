@@ -33,6 +33,7 @@ First define basically the necessary activities of the component types of your s
 Component type could be an Application Server Enterprise Archive (EAR), a Windows Program (EXE), a Spring Boot Service, a Spring Batch, an Integration Platform Adapter, a workflow artifact, etc.
 Define also necessary preparing or concluding activities of the stages.
 Besides the self-explanatory attributes we define basically to which environment (attribute 'envs') and optionally to which deployment aspects (attribute 'tags') the activity applies.
+Finally, we can apply a role to the activity (optionally).
 See example file /src/main/resources/activities.yml. The following excerpt gives you a first impression. 
 ```javascript
 # model definitions of component based activities
@@ -47,6 +48,7 @@ componentTypes:
         tags: [CONFIG]
         envs: [INT, FUNC, PRE, HOT, PROD]
         time: '00:10'
+        role: Integrator
         execution: "manualBefore"
 ...
       -
@@ -56,6 +58,7 @@ componentTypes:
         tags: [DB]
         envs: [INT, FUNC, PRE, HOT, PROD]
         time: '00:10'
+        role: Integrator
         execution: "auto"
       -
         name: "DeployArtifact"
@@ -64,12 +67,13 @@ componentTypes:
         tags: [DEPLOY, CONFIG]
         envs: [INT, FUNC, PRE, HOT, PROD]
         time: '00:15'
+        role: Integrator
         execution: "auto"
 ...
 ```
 [Back to Table of Content ](#table-of-content)
 # Release Definition
-For each release we define then the concrete environments we will go through for your release and the concrete components based on the defined component types previously.
+For each release we define then the concrete environments we will go through for our release, the concrete roles and the concrete components based on the defined component types previously.
 We constrain the components to the deployment aspects in the attribute 'tags'.
 See example file /src/main/resources/release.yml.
 Below you find a first impression:
@@ -79,6 +83,19 @@ Below you find a first impression:
 
 environments: [INT, FUNC, PRE, PROD]
 
+# define the roles for release
+activityRoles:
+  -
+    rolename: Coordinator
+    employee: John Miller
+  -
+    rolename: Integrator
+    employee: Mike Smith
+
+reviewRole:
+  rolename: Coordinator
+  employee: John Miller
+    
 # define necessary components and their aspects for release
 # possible tags: [DEPLOY, DB, CONFIG], if tags is not set thea all activities are considered by default
 components:

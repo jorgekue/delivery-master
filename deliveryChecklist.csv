@@ -1,117 +1,117 @@
-Environment;Component;Time;Activity;Description;Status;Hints
+Environment;Component;Time;Activity;Description;Status;Role;Employee;Hints
 INT;General;00:00;;;;
-INT;General;00:10;BackupDB;(optional) DB-Backup;;Request to responsible DBAs
-INT;General;00:10;IntegrationTestsIT;Smoke integration tests IT for whole system - before release activities;;"Link 2 wiki with test description or tool for automated tests"
-INT;General;00:05;StartOfMaintenanceMailParties;Send mail starting maintenance to interested parties;;
-INT;General;00:10;MaintenancePageOn;Switch on maintenance page;;"Link 2 template in wiki"
+INT;General;00:10;BackupDB;(optional) DB-Backup;;Coordinator;John Miller;Request to responsible DBAs
+INT;General;00:10;IntegrationTestsIT;Smoke integration tests IT for whole system - before release activities;;Integrator;Mike Smith;"Link 2 wiki with test description or tool for automated tests"
+INT;General;00:05;StartOfMaintenanceMailParties;Send mail starting maintenance to interested parties;;Coordinator;John Miller;
+INT;General;00:10;MaintenancePageOn;Switch on maintenance page;;Integrator;Mike Smith;"Link 2 template in wiki"
 INT;Program1;00:00;Version 1.0.6;;;
-INT;Program1;00:10;Configuration;Prepare configuration in Git;;"Link to Git-project"
-INT;Program1;00:10;ReleaseBuild;Create Release-Build via Git-Tag into Approval-Repo;;"Link Howto in wiki or to tool"
-INT;Program1;00:05;CheckApprovalRepo;Checkpoint: Deployment artifact in Approval-Repo?;;Check Nexus
-INT;Program1;00:10;FlywayMigrate;Flyway-Migrate;;"Link Howto in wiki or to tool"
-INT;Program1;00:15;DeployArtifact;Deploy Artifact;;"Link Howto in wiki or to tool"
-INT;Program1;00:15;ModulTest;Modul test;;Start Component and log in successfully
-INT;Program1;00:05;CheckLogs;Checkpoint: Check AppServer-Logs;;
+INT;Program1;00:10;Configuration;Prepare configuration in Git;;Integrator;Mike Smith;"Link to Git-project"
+INT;Program1;00:10;ReleaseBuild;Create Release-Build via Git-Tag into Approval-Repo;;Integrator;Mike Smith;"Link Howto in wiki or to tool"
+INT;Program1;00:05;CheckApprovalRepo;Checkpoint: Deployment artifact in Approval-Repo?;;Integrator;Mike Smith;Check Nexus
+INT;Program1;00:10;FlywayMigrate;Flyway-Migrate;;Integrator;Mike Smith;"Link Howto in wiki or to tool"
+INT;Program1;00:15;DeployArtifact;Deploy Artifact;;Integrator;Mike Smith;"Link Howto in wiki or to tool"
+INT;Program1;00:15;ModulTest;Modul test;;Integrator;Mike Smith;Start Component and log in successfully
+INT;Program1;00:05;CheckLogs;Checkpoint: Check AppServer-Logs;;Integrator;Mike Smith;
 INT;Program3;00:00;Version 1.2.7;;;
-INT;Program3;00:15;ProvideArtifact;Provide deployment artifact in Snapshot-Repo;;"Link Howto in wiki"
-INT;Program3;00:15;Configuration;Prepare configuration in Git;;"Link to Git-project"
-INT;Program3;00:10;FlywayMigrateDB;Migrate Database by Flyway;;"Link Howto in wiki or to tool"
-INT;Program3;00:15;DeployArtifact;Deploy-Artifact;;"Link Howto in wiki or to tool"
-INT;Program3;00:15;StagingToApprovalRepo;Stage deployment artifact to Approval-Repo;;"Link Howto in wiki or to tool (pipeline)"
-INT;Program3;00:15;CheckVersion;Manually Checkpoint: Correct Version installed;;Check logs
-INT;Program3;00:15;ModulTest;Modul test;;Start Component and log in successfully
+INT;Program3;00:15;ProvideArtifact;Provide deployment artifact in Snapshot-Repo;;Integrator;Mike Smith;"Link Howto in wiki"
+INT;Program3;00:15;Configuration;Prepare configuration in Git;;Integrator;Mike Smith;"Link to Git-project"
+INT;Program3;00:10;FlywayMigrateDB;Migrate Database by Flyway;;Integrator;Mike Smith;"Link Howto in wiki or to tool"
+INT;Program3;00:15;DeployArtifact;Deploy-Artifact;;Integrator;Mike Smith;"Link Howto in wiki or to tool"
+INT;Program3;00:15;StagingToApprovalRepo;Stage deployment artifact to Approval-Repo;;Integrator;Mike Smith;"Link Howto in wiki or to tool (pipeline)"
+INT;Program3;00:15;CheckVersion;Manually Checkpoint: Correct Version installed;;Integrator;Mike Smith;Check logs
+INT;Program3;00:15;ModulTest;Modul test;;Integrator;Mike Smith;Start Component and log in successfully
 INT;AdapterC;00:00;Version 1.2.0;;;
-INT;AdapterC;00:10;ReleaseBuild;Create Release-Build via Git-Tag into Approval-Repo;;"Link Howto in wiki or to tool"
-INT;AdapterC;00:05;CheckApprovalRepo;Checkpoint: Deployment artifact in maven-approval?;;Check Nexus
-INT;AdapterC;00:15;DeployArtifact;Deploy Artifact;;"Link Howto in wiki or to tool"
-INT;AdapterC;00:10;CheckLogs;Checkpoint: Check Mule Server-Logs;;
+INT;AdapterC;00:10;ReleaseBuild;Create Release-Build via Git-Tag into Approval-Repo;;Integrator;Mike Smith;"Link Howto in wiki or to tool"
+INT;AdapterC;00:05;CheckApprovalRepo;Checkpoint: Deployment artifact in maven-approval?;;Integrator;Mike Smith;Check Nexus
+INT;AdapterC;00:15;DeployArtifact;Deploy Artifact;;Integrator;Mike Smith;"Link Howto in wiki or to tool"
+INT;AdapterC;00:10;CheckLogs;Checkpoint: Check Mule Server-Logs;;Integrator;Mike Smith;
 INT;General;00:00;;;;
-INT;General;00:10;IntegrationTestsIT;Smoke integration tests IT for whole system - after release activities;;"Link to wiki with test description or tool for automated tests"
-INT;General;00:10;MaintenancePageOff;Switch off maintenance page;;"Link to template in wiki"
-INT;General;00:05;EndOfMaintenanceMailParties;Send mail end of maintenance to interested parties;;
+INT;General;00:10;IntegrationTestsIT;Smoke integration tests IT for whole system - after release activities;;Integrator;Mike Smith;"Link to wiki with test description or tool for automated tests"
+INT;General;00:10;MaintenancePageOff;Switch off maintenance page;;Integrator;Mike Smith;"Link to template in wiki"
+INT;General;00:05;EndOfMaintenanceMailParties;Send mail end of maintenance to interested parties;;Coordinator;John Miller;
 FUNC;General;00:00;;;;
-FUNC;General;00:10;BackupDB;(optional) DB-Backup;;Request to responsible DBAs
-FUNC;General;00:10;IntegrationTestsIT;Smoke integration tests IT for whole system - before release activities;;"Link 2 wiki with test description or tool for automated tests"
-FUNC;General;00:05;StartOfMaintenanceMailParties;Send mail starting maintenance to interested parties;;
-FUNC;General;00:10;MaintenancePageOn;Switch on maintenance page;;"Link 2 template in wiki"
+FUNC;General;00:10;BackupDB;(optional) DB-Backup;;Coordinator;John Miller;Request to responsible DBAs
+FUNC;General;00:10;IntegrationTestsIT;Smoke integration tests IT for whole system - before release activities;;Integrator;Mike Smith;"Link 2 wiki with test description or tool for automated tests"
+FUNC;General;00:05;StartOfMaintenanceMailParties;Send mail starting maintenance to interested parties;;Coordinator;John Miller;
+FUNC;General;00:10;MaintenancePageOn;Switch on maintenance page;;Integrator;Mike Smith;"Link 2 template in wiki"
 FUNC;Program1;00:00;Version 1.0.6;;;
-FUNC;Program1;00:10;Configuration;Prepare configuration in Git;;"Link to Git-project"
-FUNC;Program1;00:10;FlywayMigrate;Flyway-Migrate;;"Link Howto in wiki or to tool"
-FUNC;Program1;00:15;DeployArtifact;Deploy Artifact;;"Link Howto in wiki or to tool"
-FUNC;Program1;00:15;ModulTest;Modul test;;Start Component and log in successfully
-FUNC;Program1;00:05;CheckLogs;Checkpoint: Check AppServer-Logs;;
+FUNC;Program1;00:10;Configuration;Prepare configuration in Git;;Integrator;Mike Smith;"Link to Git-project"
+FUNC;Program1;00:10;FlywayMigrate;Flyway-Migrate;;Integrator;Mike Smith;"Link Howto in wiki or to tool"
+FUNC;Program1;00:15;DeployArtifact;Deploy Artifact;;Integrator;Mike Smith;"Link Howto in wiki or to tool"
+FUNC;Program1;00:15;ModulTest;Modul test;;Integrator;Mike Smith;Start Component and log in successfully
+FUNC;Program1;00:05;CheckLogs;Checkpoint: Check AppServer-Logs;;Integrator;Mike Smith;
 FUNC;Program3;00:00;Version 1.2.7;;;
-FUNC;Program3;00:15;Configuration;Prepare configuration in Git;;"Link to Git-project"
-FUNC;Program3;00:10;FlywayMigrateDB;Migrate Database by Flyway;;"Link Howto in wiki or to tool"
-FUNC;Program3;00:15;DeployArtifact;Deploy-Artifact;;"Link Howto in wiki or to tool"
-FUNC;Program3;00:15;CheckVersion;Manually Checkpoint: Correct Version installed;;Check logs
-FUNC;Program3;00:15;ModulTest;Modul test;;Start Component and log in successfully
+FUNC;Program3;00:15;Configuration;Prepare configuration in Git;;Integrator;Mike Smith;"Link to Git-project"
+FUNC;Program3;00:10;FlywayMigrateDB;Migrate Database by Flyway;;Integrator;Mike Smith;"Link Howto in wiki or to tool"
+FUNC;Program3;00:15;DeployArtifact;Deploy-Artifact;;Integrator;Mike Smith;"Link Howto in wiki or to tool"
+FUNC;Program3;00:15;CheckVersion;Manually Checkpoint: Correct Version installed;;Integrator;Mike Smith;Check logs
+FUNC;Program3;00:15;ModulTest;Modul test;;Integrator;Mike Smith;Start Component and log in successfully
 FUNC;AdapterC;00:00;Version 1.2.0;;;
-FUNC;AdapterC;00:15;DeployArtifact;Deploy Artifact;;"Link Howto in wiki or to tool"
-FUNC;AdapterC;00:10;CheckLogs;Checkpoint: Check Mule Server-Logs;;
+FUNC;AdapterC;00:15;DeployArtifact;Deploy Artifact;;Integrator;Mike Smith;"Link Howto in wiki or to tool"
+FUNC;AdapterC;00:10;CheckLogs;Checkpoint: Check Mule Server-Logs;;Integrator;Mike Smith;
 FUNC;General;00:00;;;;
-FUNC;General;00:10;IntegrationTestsIT;Smoke integration tests IT for whole system - after release activities;;"Link to wiki with test description or tool for automated tests"
-FUNC;General;00:10;MaintenancePageOff;Switch off maintenance page;;"Link to template in wiki"
-FUNC;General;00:05;EndOfMaintenanceMailParties;Send mail end of maintenance to interested parties;;
-FUNC;General;00:05;FunctionalTestMail;Request for functional test to business unit;;Send mail to business unit and wait for approval
+FUNC;General;00:10;IntegrationTestsIT;Smoke integration tests IT for whole system - after release activities;;Integrator;Mike Smith;"Link to wiki with test description or tool for automated tests"
+FUNC;General;00:10;MaintenancePageOff;Switch off maintenance page;;Integrator;Mike Smith;"Link to template in wiki"
+FUNC;General;00:05;EndOfMaintenanceMailParties;Send mail end of maintenance to interested parties;;Coordinator;John Miller;
+FUNC;General;00:05;FunctionalTestMail;Request for functional test to business unit;;Coordinator;John Miller;Send mail to business unit and wait for approval
 PRE;General;00:00;;;;
-PRE;General;00:30;ChangesCreatedQuestion;Changes in Change-Mgmt-Tool created?;;Ensure, all required changes are created
-PRE;General;00:10;BackupDB;(optional) DB-Backup;;Request to responsible DBAs
-PRE;General;00:10;IntegrationTestsIT;Smoke integration tests IT for whole system - before release activities;;"Link 2 wiki with test description or tool for automated tests"
-PRE;General;00:05;StartOfMaintenanceMailParties;Send mail starting maintenance to interested parties;;
-PRE;General;00:10;MaintenancePageOn;Switch on maintenance page;;"Link 2 template in wiki"
+PRE;General;00:30;ChangesCreatedQuestion;Changes in Change-Mgmt-Tool created?;;Coordinator;John Miller;Ensure, all required changes are created
+PRE;General;00:10;BackupDB;(optional) DB-Backup;;Coordinator;John Miller;Request to responsible DBAs
+PRE;General;00:10;IntegrationTestsIT;Smoke integration tests IT for whole system - before release activities;;Integrator;Mike Smith;"Link 2 wiki with test description or tool for automated tests"
+PRE;General;00:05;StartOfMaintenanceMailParties;Send mail starting maintenance to interested parties;;Coordinator;John Miller;
+PRE;General;00:10;MaintenancePageOn;Switch on maintenance page;;Integrator;Mike Smith;"Link 2 template in wiki"
 PRE;Program1;00:00;Version 1.0.6;;;
-PRE;Program1;00:10;Configuration;Prepare configuration in Git;;"Link to Git-project"
-PRE;Program1;00:10;FlywayMigrate;Flyway-Migrate;;"Link Howto in wiki or to tool"
-PRE;Program1;00:15;DeployArtifact;Deploy Artifact;;"Link Howto in wiki or to tool"
-PRE;Program1;00:15;ModulTest;Modul test;;Start Component and log in successfully
-PRE;Program1;00:05;CheckLogs;Checkpoint: Check AppServer-Logs;;
+PRE;Program1;00:10;Configuration;Prepare configuration in Git;;Integrator;Mike Smith;"Link to Git-project"
+PRE;Program1;00:10;FlywayMigrate;Flyway-Migrate;;Integrator;Mike Smith;"Link Howto in wiki or to tool"
+PRE;Program1;00:15;DeployArtifact;Deploy Artifact;;Integrator;Mike Smith;"Link Howto in wiki or to tool"
+PRE;Program1;00:15;ModulTest;Modul test;;Integrator;Mike Smith;Start Component and log in successfully
+PRE;Program1;00:05;CheckLogs;Checkpoint: Check AppServer-Logs;;Integrator;Mike Smith;
 PRE;Program3;00:00;Version 1.2.7;;;
-PRE;Program3;00:15;Configuration;Prepare configuration in Git;;"Link to Git-project"
-PRE;Program3;00:10;FlywayMigrateDB;Migrate Database by Flyway;;"Link Howto in wiki or to tool"
-PRE;Program3;00:15;DeployArtifact;Deploy-Artifact;;"Link Howto in wiki or to tool"
-PRE;Program3;00:15;CheckVersion;Manually Checkpoint: Correct Version installed;;Check logs
-PRE;Program3;00:15;ModulTest;Modul test;;Start Component and log in successfully
+PRE;Program3;00:15;Configuration;Prepare configuration in Git;;Integrator;Mike Smith;"Link to Git-project"
+PRE;Program3;00:10;FlywayMigrateDB;Migrate Database by Flyway;;Integrator;Mike Smith;"Link Howto in wiki or to tool"
+PRE;Program3;00:15;DeployArtifact;Deploy-Artifact;;Integrator;Mike Smith;"Link Howto in wiki or to tool"
+PRE;Program3;00:15;CheckVersion;Manually Checkpoint: Correct Version installed;;Integrator;Mike Smith;Check logs
+PRE;Program3;00:15;ModulTest;Modul test;;Integrator;Mike Smith;Start Component and log in successfully
 PRE;AdapterC;00:00;Version 1.2.0;;;
-PRE;AdapterC;00:15;DeployArtifact;Deploy Artifact;;"Link Howto in wiki or to tool"
-PRE;AdapterC;00:10;CheckLogs;Checkpoint: Check Mule Server-Logs;;
+PRE;AdapterC;00:15;DeployArtifact;Deploy Artifact;;Integrator;Mike Smith;"Link Howto in wiki or to tool"
+PRE;AdapterC;00:10;CheckLogs;Checkpoint: Check Mule Server-Logs;;Integrator;Mike Smith;
 PRE;General;00:00;;;;
-PRE;General;00:10;IntegrationTestsIT;Smoke integration tests IT for whole system - after release activities;;"Link to wiki with test description or tool for automated tests"
-PRE;General;00:10;MaintenancePageOff;Switch off maintenance page;;"Link to template in wiki"
-PRE;General;00:05;EndOfMaintenanceMailParties;Send mail end of maintenance to interested parties;;
-PRE;General;00:05;ApprovalTestMail;Request for approval test to business unit;;Send mail to business unit and wait for approval
+PRE;General;00:10;IntegrationTestsIT;Smoke integration tests IT for whole system - after release activities;;Integrator;Mike Smith;"Link to wiki with test description or tool for automated tests"
+PRE;General;00:10;MaintenancePageOff;Switch off maintenance page;;Integrator;Mike Smith;"Link to template in wiki"
+PRE;General;00:05;EndOfMaintenanceMailParties;Send mail end of maintenance to interested parties;;Coordinator;John Miller;
+PRE;General;00:05;ApprovalTestMail;Request for approval test to business unit;;Coordinator;John Miller;Send mail to business unit and wait for approval
 PROD;General;00:00;;;;
-PROD;General;00:15;ChangeMgrApproval;Changes: Ensure approval by Change Mgr;;
-PROD;General;00:10;BackupDB;(optional) DB-Backup;;Request to responsible DBAs
-PROD;General;00:10;IntegrationTestsIT;Smoke integration tests IT for whole system - before release activities;;"Link 2 wiki with test description or tool for automated tests"
-PROD;General;00:05;StartOfMaintenanceMailParties;Send mail starting maintenance to interested parties;;
-PROD;General;00:15;StartOfMaintenanceMailMon;Send mail to monitoring: Start of maintenance;;"Link 2 template in wiki"
-PROD;General;00:10;MaintenancePageOn;Switch on maintenance page;;"Link 2 template in wiki"
+PROD;General;00:15;ChangeMgrApproval;Changes: Ensure approval by Change Mgr;;Coordinator;John Miller;
+PROD;General;00:10;BackupDB;(optional) DB-Backup;;Coordinator;John Miller;Request to responsible DBAs
+PROD;General;00:10;IntegrationTestsIT;Smoke integration tests IT for whole system - before release activities;;Integrator;Mike Smith;"Link 2 wiki with test description or tool for automated tests"
+PROD;General;00:05;StartOfMaintenanceMailParties;Send mail starting maintenance to interested parties;;Coordinator;John Miller;
+PROD;General;00:15;StartOfMaintenanceMailMon;Send mail to monitoring: Start of maintenance;;Coordinator;John Miller;"Link 2 template in wiki"
+PROD;General;00:10;MaintenancePageOn;Switch on maintenance page;;Integrator;Mike Smith;"Link 2 template in wiki"
 PROD;Program1;00:00;Version 1.0.6;;;
-PROD;Program1;00:10;Configuration;Prepare configuration in Git;;"Link to Git-project"
-PROD;Program1;00:15;StageToProdRepo;Stage deployment artifact to Prod-Repo;;"Link Howto in wiki or to tool (pipeline)"
-PROD;Program1;00:05;CheckProdRepo;Checkpoint: Deployment artifact in Prod-Repo?;;Check Nexus
-PROD;Program1;00:10;FlywayMigrate;Flyway-Migrate;;"Link Howto in wiki or to tool"
-PROD;Program1;00:15;DeployArtifact;Deploy Artifact;;"Link Howto in wiki or to tool"
-PROD;Program1;00:15;ModulTest;Modul test;;Start Component and log in successfully
-PROD;Program1;00:05;CheckLogs;Checkpoint: Check AppServer-Logs;;
+PROD;Program1;00:10;Configuration;Prepare configuration in Git;;Integrator;Mike Smith;"Link to Git-project"
+PROD;Program1;00:15;StageToProdRepo;Stage deployment artifact to Prod-Repo;;Integrator;Mike Smith;"Link Howto in wiki or to tool (pipeline)"
+PROD;Program1;00:05;CheckProdRepo;Checkpoint: Deployment artifact in Prod-Repo?;;Integrator;Mike Smith;Check Nexus
+PROD;Program1;00:10;FlywayMigrate;Flyway-Migrate;;Integrator;Mike Smith;"Link Howto in wiki or to tool"
+PROD;Program1;00:15;DeployArtifact;Deploy Artifact;;Integrator;Mike Smith;"Link Howto in wiki or to tool"
+PROD;Program1;00:15;ModulTest;Modul test;;Integrator;Mike Smith;Start Component and log in successfully
+PROD;Program1;00:05;CheckLogs;Checkpoint: Check AppServer-Logs;;Integrator;Mike Smith;
 PROD;Program3;00:00;Version 1.2.7;;;
-PROD;Program3;00:15;Configuration;Prepare configuration in Git;;"Link to Git-project"
-PROD;Program3;00:15;StageToProdRepo;Stage deployment artifact Prod-Repo;;"Link Howto in wiki or to tool (pipeline)"
-PROD;Program3;00:10;FlywayMigrateDB;Migrate Database by Flyway;;"Link Howto in wiki or to tool"
-PROD;Program3;00:15;DeployArtifact;Deploy-Artifact;;"Link Howto in wiki or to tool"
-PROD;Program3;00:15;CheckVersion;Manually Checkpoint: Correct Version installed;;Check logs
-PROD;Program3;00:15;ModulTest;Modul test;;Start Component and log in successfully
+PROD;Program3;00:15;Configuration;Prepare configuration in Git;;Integrator;Mike Smith;"Link to Git-project"
+PROD;Program3;00:15;StageToProdRepo;Stage deployment artifact Prod-Repo;;Integrator;Mike Smith;"Link Howto in wiki or to tool (pipeline)"
+PROD;Program3;00:10;FlywayMigrateDB;Migrate Database by Flyway;;Integrator;Mike Smith;"Link Howto in wiki or to tool"
+PROD;Program3;00:15;DeployArtifact;Deploy-Artifact;;Integrator;Mike Smith;"Link Howto in wiki or to tool"
+PROD;Program3;00:15;CheckVersion;Manually Checkpoint: Correct Version installed;;Integrator;Mike Smith;Check logs
+PROD;Program3;00:15;ModulTest;Modul test;;Integrator;Mike Smith;Start Component and log in successfully
 PROD;AdapterC;00:00;Version 1.2.0;;;
-PROD;AdapterC;00:10;StageToProdRepo;Stage deployment artifact to Prod-Repo;;"Link Howto in wiki or to tool (pipeline)"
-PROD;AdapterC;00:05;CheckProdRepo;Checkpoint: Deployment artifact in Prod-Repo?;;Check Nexus
-PROD;AdapterC;00:15;DeployArtifact;Deploy Artifact;;"Link Howto in wiki or to tool"
-PROD;AdapterC;00:10;CheckLogs;Checkpoint: Check Mule Server-Logs;;
+PROD;AdapterC;00:10;StageToProdRepo;Stage deployment artifact to Prod-Repo;;Integrator;Mike Smith;"Link Howto in wiki or to tool (pipeline)"
+PROD;AdapterC;00:05;CheckProdRepo;Checkpoint: Deployment artifact in Prod-Repo?;;Integrator;Mike Smith;Check Nexus
+PROD;AdapterC;00:15;DeployArtifact;Deploy Artifact;;Integrator;Mike Smith;"Link Howto in wiki or to tool"
+PROD;AdapterC;00:10;CheckLogs;Checkpoint: Check Mule Server-Logs;;Integrator;Mike Smith;
 PROD;General;00:00;;;;
-PROD;General;00:10;IntegrationTestsIT;Smoke integration tests IT for whole system - after release activities;;"Link to wiki with test description or tool for automated tests"
-PROD;General;00:10;MaintenancePageOff;Switch off maintenance page;;"Link to template in wiki"
-PROD;General;00:05;EndOfMaintenanceMailParties;Send mail end of maintenance to interested parties;;
-PROD;General;00:15;EndOfMaintenanceMailMon;Send mail to monitoring: end of maintenance;;"Link to template in wiki"
-PROD;General;00:15;CompleteChanges;Complete Changes in Change Mgmt-Tool;;
+PROD;General;00:10;IntegrationTestsIT;Smoke integration tests IT for whole system - after release activities;;Integrator;Mike Smith;"Link to wiki with test description or tool for automated tests"
+PROD;General;00:10;MaintenancePageOff;Switch off maintenance page;;Integrator;Mike Smith;"Link to template in wiki"
+PROD;General;00:05;EndOfMaintenanceMailParties;Send mail end of maintenance to interested parties;;Coordinator;John Miller;
+PROD;General;00:15;EndOfMaintenanceMailMon;Send mail to monitoring: end of maintenance;;Coordinator;John Miller;"Link to template in wiki"
+PROD;General;00:15;CompleteChanges;Complete Changes in Change Mgmt-Tool;;Coordinator;John Miller;
 
 

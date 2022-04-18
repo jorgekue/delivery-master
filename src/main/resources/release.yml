@@ -3,8 +3,21 @@
 
 environments: [INT, FUNC, PRE, PROD]
 
+activityRoles:
+  -
+    rolename: Coordinator
+    employee: John Miller
+  -
+    rolename: Integrator
+    employee: Mike Smith
+
+reviewRole:
+  rolename: Coordinator
+  employee: John Miller
+
+
 # define necessary components and their aspects for release
-# possible tags: [DEPLOY, DB, CONFIG], if tags is not set then all activities are considered by default
+# possible tags: [DEPLOY, DB, CONFIG], if tags is not set thea all activities are considered by default
 components:
   -
     name: Program1
